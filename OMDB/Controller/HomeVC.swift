@@ -64,8 +64,8 @@ class HomeVC: UIViewController {
                             
                             self.moviesArray.append(mov)
                             
-                            //self.activityIndicator.stopAnimating()
-                            //self.activityIndicator.isHidden = true
+                            self.activityIndicator.stopAnimating()
+                            self.activityIndicator.isHidden = true
                             
                             self.movieCollectionView.reloadData()
                         }
