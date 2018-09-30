@@ -16,11 +16,15 @@ class HomeVC: UIViewController {
     var pageNumber = 1
     
     @IBOutlet weak var movieCollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         
         loadData(pageNumber)
         
@@ -60,6 +64,9 @@ class HomeVC: UIViewController {
                             
                             self.moviesArray.append(mov)
                             
+                            //self.activityIndicator.stopAnimating()
+                            //self.activityIndicator.isHidden = true
+                            
                             self.movieCollectionView.reloadData()
                         }
                     }
@@ -89,6 +96,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let offset = scrollView.contentOffset.y
         let maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
         if (maxOffset - offset) <= 0 {
+            
             pageNumber += 1
             loadData(pageNumber)
         }
